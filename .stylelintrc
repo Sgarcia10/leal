@@ -1,0 +1,20 @@
+{
+  "plugins": ["stylelint-scss"],
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["extend", "include", "mixin"]
+      }
+    ],
+    "string-quotes": "single",
+    "selector-pseudo-element-colon-notation": "single",
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignore": ["custom-elements", "default-namespace"]
+      }
+    ]
+  }
+}

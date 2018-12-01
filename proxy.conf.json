@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://pruebatecnica.puntosleal.com",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}
