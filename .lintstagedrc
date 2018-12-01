@@ -3,7 +3,6 @@
   "linters": {
     '*.{scss,css}': ['npm run lint:styles', 'npm run format', 'git add'],
     '*.{json}': ['npm run format', 'git add'],
-    './src/server/*.{ts,js}': ['npm run lint:server', 'npm run format', 'git add'],
     './src/client/*.{ts}': ['npm run lint:client', 'npm run format', 'git add'],
   }
 }
