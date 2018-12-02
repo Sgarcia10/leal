@@ -10,7 +10,7 @@ export function AuthReducer(state: AuthState, action: AuthActions.ClassType): Au
     case AuthActions.Type.LOGIN_FAILED:
       return { ...state, user: null, error: action.payload, authenticating: false };
     case AuthActions.Type.LOGOUT:
-      return { ...state, ...defaultAuthState };
+      return defaultAuthState;
     default: {
       return defaultAuthState;
     }

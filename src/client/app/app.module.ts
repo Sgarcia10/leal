@@ -15,12 +15,14 @@ import { AppRoutingModule } from './app.routing';
 import { LoginModule } from './containers/login/login.module';
 import { UserModule } from './containers/user/user.module';
 import { AuthEffects } from './store/auth';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    CoreModule,
+    SharedModule,
+    CoreModule.forRoot(),
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([AppEffects, AuthEffects]),
     StoreDevtoolsModule.instrument({

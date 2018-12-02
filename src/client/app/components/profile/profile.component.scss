@@ -1,4 +1,8 @@
 .app-profile {
+  mat-card-subtitle {
+    margin: 0;
+  }
+
   .profile-header-avatar {
     .profile-header-avatar-icon {
       line-height: 40px;

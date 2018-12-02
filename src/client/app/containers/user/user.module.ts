@@ -5,6 +5,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { ProfileComponent } from '../../components/profile/profile.component';
 import { TransactionFeedComponent } from '../../components/transaction-feed/transaction-feed.component';
 import { TransactionComponent } from '../../components/transaction/transaction.component';
+import { DialogTransactionDetailComponent } from '../../components/dialog-transaction-detail/dialog-transaction-detail.component';
 
 @NgModule({
   declarations: [
@@ -12,8 +13,10 @@ import { TransactionComponent } from '../../components/transaction/transaction.c
     HeaderComponent,
     ProfileComponent,
     TransactionFeedComponent,
-    TransactionComponent
+    TransactionComponent,
+    DialogTransactionDetailComponent
   ],
-  imports: [SharedModule]
+  imports: [SharedModule],
+  entryComponents: [DialogTransactionDetailComponent]
 })
 export class UserModule {}

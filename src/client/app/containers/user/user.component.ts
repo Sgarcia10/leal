@@ -9,6 +9,8 @@ import { User } from '../../core/models/user';
 import { TransactionsDTO } from '../../core/models/transactionsDTO';
 import { TransactionService } from '../../core/services/transaction/transaction.service';
 import { Transaction } from '../../core/models/transaction';
+import { DialogService } from '../../core/services/utils/dialog.service';
+import { DialogTransactionDetailComponent } from '../../components/dialog-transaction-detail/dialog-transaction-detail.component';
 
 @Component({
   selector: 'app-user',
@@ -28,7 +30,8 @@ export class UserComponent implements OnInit {
   constructor(
     private store: Store<AuthState>,
     private router: Router,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private dialogService: DialogService
   ) {
     this.authState$ = this.store.pipe(select(selectAuth));
     this.authState$.subscribe(state => {
@@ -88,6 +91,11 @@ export class UserComponent implements OnInit {
   }
 
   viewDetail(_id: string) {
-    console.log(_id);
+    const currentTransaction = this.transactions.find(
+      transaction => transaction._id === _id
+    );
+    this.dialogService.openDialogTransactionDetail(DialogTransactionDetailComponent, {
+      data: currentTransaction
+    });
   }
 }

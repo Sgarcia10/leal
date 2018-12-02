@@ -1,1 +1,21 @@
-<div class="app-transaction"></div>
+<div class="app-transaction">
+  <label class="mat-title">Transaction</label>
+  <mat-chip-list class="mat-chip-list-stacked" selectable="false" multiple>
+    <label>Created Date: </label>
+    <mat-chip class="chip" selected="false">
+      {{transaction.createdDate | date:"MM/dd/yy"}}
+    </mat-chip>
+    <label>Value: </label>
+    <mat-chip class="chip" selected="false">
+      {{transaction.value | currency}}
+    </mat-chip>
+    <label>Points: </label>
+    <mat-chip class="chip" selected="false">
+      {{transaction.points}}
+    </mat-chip>
+    <label>Type: </label>
+    <mat-chip class="chip" selected="false">
+      {{transaction.type}}
+    </mat-chip>
+  </mat-chip-list>
+</div>

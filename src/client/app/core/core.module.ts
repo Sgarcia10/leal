@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { APP_CONTEXT_TOKEN, AppContext } from './context';
 import { AppService } from './services/app.service';
 import { httpInterceptorProviders } from './http-interceptors';
+import { DialogService } from './services/utils/dialog.service';
 
 @NgModule({
   declarations: [],
@@ -28,7 +29,7 @@ export class CoreModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: CoreModule,
-      providers: []
+      providers: [DialogService]
     };
   }
 }

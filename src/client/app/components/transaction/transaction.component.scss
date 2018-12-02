@@ -1,3 +1,11 @@
 .app-transaction {
   position: relative;
+
+  label {
+    margin: 4px;
+  }
+
+  .chip {
+    background-color: cornflowerblue;
+  }
 }
