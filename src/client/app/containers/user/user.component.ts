@@ -6,6 +6,9 @@ import { select, Store } from '@ngrx/store';
 import { isNullOrUndefined } from 'util';
 import { Router } from '@angular/router';
 import { User } from '../../core/models/user';
+import { TransactionsDTO } from '../../core/models/transactionsDTO';
+import { TransactionService } from '../../core/services/transaction/transaction.service';
+import { Transaction } from '../../core/models/transaction';
 
 @Component({
   selector: 'app-user',
@@ -15,13 +18,18 @@ import { User } from '../../core/models/user';
 export class UserComponent implements OnInit {
   authState$: Observable<AuthState>;
   currentUser: User;
+  transactions: Transaction[];
 
   /**
    *Creates an instance of UserComponent.
    * @param {Store<AuthState>} store
    * @memberof UserComponent
    */
-  constructor(private store: Store<AuthState>, private router: Router) {
+  constructor(
+    private store: Store<AuthState>,
+    private router: Router,
+    private transactionService: TransactionService
+  ) {
     this.authState$ = this.store.pipe(select(selectAuth));
     this.authState$.subscribe(state => {
       if (state && isNullOrUndefined(state.user)) {
@@ -32,14 +40,46 @@ export class UserComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.transactionService.getAll().subscribe(data => (this.transactions = data));
+  }
 
   /**
    * Dispatch logout action
    *
    * @memberof UserComponent
    */
-  logout() {
+  logout(): void {
     this.store.dispatch(new AuthActions.Logout());
+  }
+
+  /**
+   *
+   *
+   * @readonly
+   * @type {string}
+   * @memberof UserComponent
+   */
+  get fullName(): string {
+    if (!isNullOrUndefined(this.currentUser)) {
+      return `${this.currentUser.firstName} ${this.currentUser.lastName}`;
+    }
+    return '';
+  }
+
+  get email(): string {
+    if (!isNullOrUndefined(this.currentUser)) {
+      return `${this.currentUser.email}`;
+    }
+    return '';
+  }
+
+  get transactionFeed(): { position: number; createdDate: Date }[] {
+    if (!isNullOrUndefined(this.transactions)) {
+      return this.transactions.map((transaction, i) => {
+        return { position: i + 1, createdDate: transaction.createdDate };
+      });
+    }
+    return [];
   }
 }

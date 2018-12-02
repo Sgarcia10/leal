@@ -1,0 +1,17 @@
+.app-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 15px;
+
+  & > * {
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  @media only screen and (min-width: 600px) {
+    & > * {
+      width: 66%;
+    }
+  }
+}

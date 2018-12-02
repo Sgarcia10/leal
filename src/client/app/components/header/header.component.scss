@@ -8,15 +8,14 @@
   z-index: 2;
 
   .header-container {
-    width: 100%;
     line-height: $header-height;
     background-color: white;
     padding-left: 16px;
     padding-right: 16px;
-    box-sizing: border-box;
-    display: flex;
     align-items: center;
     height: 100%;
+    display: grid;
+    grid-template-areas: 'logo-leal menu';
   }
 
   .logo-leal {
@@ -25,6 +24,7 @@
     background-size: 35px 35px;
     height: 35px;
     width: 35px;
+    grid-area: logo-leal;
   }
 
   .menu {
@@ -41,6 +41,7 @@
         margin-right: 8px;
         font-size: 16px;
         font-weight: 700;
+        line-height: 24px;
       }
     }
 
@@ -58,28 +59,17 @@
     .header-container {
       padding-left: 152px;
       padding-right: 152px;
-      display: grid;
-      grid-template-areas:
-        "logo-leal menu"
     }
 
     .logo-leal {
       background-size: 40px 40px;
       height: 40px;
       width: 40px;
-      grid-area: logo-leal;
     }
 
     .menu {
-
-
       .logout-button {
         cursor: pointer;
-
-        .logout-button-label {
-          margin-right: 8px;
-          line-height: 24px;
-        }
       }
     }
   }

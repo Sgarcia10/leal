@@ -1,4 +1,5 @@
 <app-header (logout$)=logout() [name]="currentUser.firstName"></app-header>
-<p>
-  user works!
-</p>
+<div class="app-user">
+  <app-profile class="app-profile" [name]="fullName" [email]="email"></app-profile>
+  <app-transaction-feed class="app-transaction-feed" [transactionFeed]="transactionFeed"></app-transaction-feed>
+</div>
