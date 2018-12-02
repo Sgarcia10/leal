@@ -2,5 +2,6 @@
 <div class="app-user">
   <app-profile class="app-profile" [name]="fullName" [email]="email"></app-profile>
   <app-date-filter (filter$)=filterByDate($event)></app-date-filter>
-  <app-transaction-feed class="app-transaction-feed" [transactionFeed]="transactionFeed" (viewDetail$)="viewDetail($event)"></app-transaction-feed>
+  <app-transaction-feed class="app-transaction-feed" [transactionFeed]="transactionFeed" [loading]="loadingTransactions"
+    (viewDetail$)="viewDetail($event)"></app-transaction-feed>
 </div>

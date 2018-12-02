@@ -10,6 +10,7 @@ import { isNullOrUndefined } from 'util';
 export class TransactionFeedComponent implements OnInit {
   _transactionFeed: { _id: string; position: number; createdDate: string }[];
   displayedColumns: string[] = ['position', 'createdDate', 'actions'];
+  @Input() loading: boolean;
   @Output() viewDetail$ = new EventEmitter<string>();
 
   constructor() {}

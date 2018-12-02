@@ -21,6 +21,7 @@ export class UserComponent implements OnInit {
   authState$: Observable<AuthState>;
   currentUser: User;
   transactions: Transaction[];
+  loadingTransactions: boolean;
 
   /**
    *Creates an instance of UserComponent.
@@ -44,7 +45,11 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.transactionService.getAll().subscribe(data => (this.transactions = data));
+    this.loadingTransactions = true;
+    this.transactionService.getAll().subscribe(data => {
+      this.transactions = data;
+      this.loadingTransactions = false;
+    });
   }
 
   /**
@@ -100,8 +105,10 @@ export class UserComponent implements OnInit {
   }
 
   filterByDate($event: { fromDate: string; toDate: string }) {
-    this.transactionService
-      .getByDates($event.fromDate, $event.toDate)
-      .subscribe(data => (this.transactions = data));
+    this.loadingTransactions = true;
+    this.transactionService.getByDates($event.fromDate, $event.toDate).subscribe(data => {
+      this.loadingTransactions = false;
+      this.transactions = data;
+    });
   }
 }
