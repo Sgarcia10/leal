@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { LoginModule } from './containers/login/login.module';
 import { UserModule } from './containers/user/user.module';
+import { AuthEffects } from './store/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,7 @@ import { UserModule } from './containers/user/user.module';
     BrowserModule,
     CoreModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([AppEffects]),
+    EffectsModule.forRoot([AppEffects, AuthEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production // Restrict extension to log-only mode

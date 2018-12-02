@@ -6,30 +6,45 @@ import {
   Router
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth/auth.service';
+import { AuthState } from '../../store/auth';
+import { Store, select } from '@ngrx/store';
+import { selectAuth } from '../../store';
+import { isNullOrUndefined } from 'util';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  authState$: Observable<AuthState>;
+  isLogged: boolean;
+
+  /**
+   *Creates an instance of LoginComponent.
+   * @param {AuthService} authService
+   * @param {Router} router
+   * @memberof LoginComponent
+   */
+  constructor(private store: Store<AuthState>, private router: Router) {
+    this.isLogged = false;
+    this.authState$ = this.store.pipe(select(selectAuth));
+    this.authState$.subscribe(state => {
+      if (state && !isNullOrUndefined(state.user)) {
+        this.isLogged = true;
+      }
+    });
+  }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    const url: string = state.url;
-
-    return this.checkLogin(url);
+    return this.checkLogin();
   }
 
-  checkLogin(url: string): boolean {
-    if (this.authService.isLoggedIn) {
+  checkLogin(): boolean {
+    if (this.isLogged) {
       return true;
     }
-
-    // Store the attempted URL for redirecting
-    this.authService.redirectUrl = url;
 
     // Navigate to the login page with extras
     this.router.navigate(['/login']);

@@ -1,0 +1,11 @@
+<mat-card class="app-header">
+  <div #appHeader id="appHeader" class="header-container">
+    <div class="logo-leal"></div>
+    <div class="menu">
+      <div mat-icon-button (click)="logout()" class="logout-button">
+        <span class="logout-button-label">{{name}}</span>
+        <mat-icon aria-label="logout">logout</mat-icon>
+      </div>
+    </div>
+  </div>
+</mat-card>

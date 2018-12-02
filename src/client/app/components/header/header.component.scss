@@ -1,0 +1,86 @@
+@import '../../shared/shared.styles.scss';
+
+.app-header {
+  padding: 0;
+  height: 64px;
+  width: 100vw;
+  text-align: left;
+  z-index: 2;
+
+  .header-container {
+    width: 100%;
+    line-height: $header-height;
+    background-color: white;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .logo-leal {
+    background-image: url(../../../assets/logoleal2017.svg);
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    height: 35px;
+    width: 35px;
+  }
+
+  .menu {
+    color: rgb(112, 116, 116);
+    grid-area: menu;
+    display: flex;
+    align-content: flex-end;
+    flex-flow: row-reverse;
+
+    .logout-button {
+      display: inline-flex;
+
+      .logout-button-label {
+        margin-right: 8px;
+        font-size: 16px;
+        font-weight: 700;
+      }
+    }
+
+    .menu-option {
+      margin-left: 32px;
+      cursor: pointer;
+    }
+  }
+
+  .menu-mobile {
+    display: none;
+  }
+
+  @media only screen and (min-width: 600px) {
+    .header-container {
+      padding-left: 152px;
+      padding-right: 152px;
+      display: grid;
+      grid-template-areas:
+        "logo-leal menu"
+    }
+
+    .logo-leal {
+      background-size: 40px 40px;
+      height: 40px;
+      width: 40px;
+      grid-area: logo-leal;
+    }
+
+    .menu {
+
+
+      .logout-button {
+        cursor: pointer;
+
+        .logout-button-label {
+          margin-right: 8px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+}

@@ -1,8 +1,8 @@
 <div class="app-login">
-  <form class="login-form">
+  <form [formGroup]="loginForm" class="login-form" (submit)="login()">
     <div class="login-image"></div>
     <mat-form-field class="input-full-width">
-      <input matInput placeholder="Email" [formControl]="emailFormControl">
+      <input matInput placeholder="Email" formControlName="email">
       <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
         Please enter a valid email address
       </mat-error>
@@ -11,7 +11,7 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field class="input-full-width">
-      <input matInput type="password" placeholder="Password" [formControl]="passwordFormControl">
+      <input matInput type="password" placeholder="Password" formControlName="password">
       <mat-error *ngIf="passwordFormControl.hasError('required')">
         Password is <strong>required</strong>
       </mat-error>

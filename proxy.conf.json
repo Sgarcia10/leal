@@ -1,7 +1,12 @@
 {
   "/api": {
-    "target": "https://pruebatecnica.puntosleal.com",
+    "target": {
+      "host": "pruebatecnica.puntosleal.com",
+      "protocol": "https:",
+      "port": 443
+    },
     "secure": false,
+    "changeOrigin": true,
     "logLevel": "debug"
   }
 }

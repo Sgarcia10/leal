@@ -7,13 +7,14 @@ import {
 } from '@ngrx/store';
 
 import { AppState, AppReducer } from './app';
+import { AuthState, AuthReducer } from './auth';
 
 export interface AppAction {
-  appState: AppState;
+  authState: AuthState;
 }
 
 export const reducers: ActionReducerMap<AppAction> = {
-  appState: AppReducer
+  authState: AuthReducer
 };
 
 export function actionsLogger(reducer: ActionReducer<AppAction>) {
@@ -36,4 +37,4 @@ if (!environment.production) {
   metaReducers.push(actionsLogger);
 }
 
-export const selectApp = createFeatureSelector<AppState>('appState');
+export const selectAuth = createFeatureSelector<AuthState>('authState');
