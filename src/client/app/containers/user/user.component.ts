@@ -98,4 +98,10 @@ export class UserComponent implements OnInit {
       data: currentTransaction
     });
   }
+
+  filterByDate($event: { fromDate: string; toDate: string }) {
+    this.transactionService
+      .getByDates($event.fromDate, $event.toDate)
+      .subscribe(data => (this.transactions = data));
+  }
 }

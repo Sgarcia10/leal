@@ -6,6 +6,7 @@ import { ProfileComponent } from '../../components/profile/profile.component';
 import { TransactionFeedComponent } from '../../components/transaction-feed/transaction-feed.component';
 import { TransactionComponent } from '../../components/transaction/transaction.component';
 import { DialogTransactionDetailComponent } from '../../components/dialog-transaction-detail/dialog-transaction-detail.component';
+import { DateFilterComponent } from '../../components/date-filter/date-filter.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DialogTransactionDetailComponent } from '../../components/dialog-transa
     ProfileComponent,
     TransactionFeedComponent,
     TransactionComponent,
-    DialogTransactionDetailComponent
+    DialogTransactionDetailComponent,
+    DateFilterComponent
   ],
   imports: [SharedModule],
   entryComponents: [DialogTransactionDetailComponent]

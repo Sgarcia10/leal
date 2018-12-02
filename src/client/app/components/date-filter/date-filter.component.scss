@@ -1,0 +1,23 @@
+.app-date-filter {
+  .filter-icon {
+    flex-grow: 0;
+    margin: 0;
+  }
+
+  .filter-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: 'from to';
+
+    .from {
+      grid-area: from;
+      padding-right: 10px;
+    }
+
+    .to {
+      grid-area: to;
+      padding-left: 10px;
+    }
+  }
+}

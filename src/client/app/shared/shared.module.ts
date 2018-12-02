@@ -11,8 +11,15 @@ import {
   MatTableModule,
   MatProgressSpinnerModule,
   MatDialogModule,
-  MatChipsModule
+  MatChipsModule,
+  MatDatepickerModule,
+  MatExpansionModule
 } from '@angular/material';
+import {
+  MAT_MOMENT_DATE_FORMATS,
+  MomentDateAdapter
+} from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
 const modules = [
   BrowserAnimationsModule,
@@ -27,11 +34,19 @@ const modules = [
   MatTableModule,
   MatProgressSpinnerModule,
   MatDialogModule,
-  MatChipsModule
+  MatChipsModule,
+  MatDatepickerModule,
+  MatExpansionModule
+];
+
+const providers = [
+  { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+  { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }
 ];
 
 @NgModule({
   imports: [...modules],
+  providers: [...providers],
   exports: [...modules]
 })
 export class SharedModule {}
