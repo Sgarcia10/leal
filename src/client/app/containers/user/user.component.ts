@@ -37,6 +37,8 @@ export class UserComponent implements OnInit {
     this.currentUser = null;
     this.authState$ = this.store.pipe(select(selectAuth));
     this.authState$.subscribe(state => {
+      console.log(state);
+
       if (state && isNullOrUndefined(state.user)) {
         this.router.navigate(['/login']);
       } else {

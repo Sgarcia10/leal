@@ -23,7 +23,7 @@ export class AuthEffects {
 
   @Effect({ dispatch: false })
   logout = this.actions.pipe(
-    ofType(AuthActions.Type.LOGOUT),
+    ofType<AuthActions.Logout>(AuthActions.Type.LOGOUT),
     tap(auth => this.service.logout())
   );
 }
