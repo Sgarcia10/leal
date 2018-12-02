@@ -17,5 +17,10 @@
 
   .transaction-feed-table {
     width: 100%;
+
+    .action-button {
+      cursor: pointer;
+      color: rgb(249, 214, 73);
+    }
   }
 }

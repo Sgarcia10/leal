@@ -74,12 +74,20 @@ export class UserComponent implements OnInit {
     return '';
   }
 
-  get transactionFeed(): { position: number; createdDate: Date }[] {
+  get transactionFeed(): { _id: string; position: number; createdDate: Date }[] {
     if (!isNullOrUndefined(this.transactions)) {
       return this.transactions.map((transaction, i) => {
-        return { position: i + 1, createdDate: transaction.createdDate };
+        return {
+          _id: transaction._id,
+          position: i + 1,
+          createdDate: transaction.createdDate
+        };
       });
     }
     return [];
+  }
+
+  viewDetail(_id: string) {
+    console.log(_id);
   }
 }

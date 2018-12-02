@@ -1,5 +1,5 @@
 <app-header (logout$)=logout() [name]="currentUser.firstName"></app-header>
 <div class="app-user">
   <app-profile class="app-profile" [name]="fullName" [email]="email"></app-profile>
-  <app-transaction-feed class="app-transaction-feed" [transactionFeed]="transactionFeed"></app-transaction-feed>
+  <app-transaction-feed class="app-transaction-feed" [transactionFeed]="transactionFeed" (viewDetail$)="viewDetail($event)"></app-transaction-feed>
 </div>
