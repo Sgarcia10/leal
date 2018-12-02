@@ -6,7 +6,6 @@ import {
   createFeatureSelector
 } from '@ngrx/store';
 
-import { AppState, AppReducer } from './app';
 import { AuthState, AuthReducer } from './auth';
 
 export interface AppAction {

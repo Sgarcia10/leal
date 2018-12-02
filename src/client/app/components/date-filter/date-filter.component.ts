@@ -14,11 +14,15 @@ import * as moment from 'moment';
 })
 export class DateFilterComponent implements OnInit {
   @Output() filter$ = new EventEmitter<{ fromDate: string; toDate: string }>();
-  fromDate = new FormControl(moment(['', '', '']), Validators.required);
-  toDate = new FormControl(moment(['', '', '']), Validators.required);
+  fromDate: FormControl;
+  toDate: FormControl;
+  moment = moment;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.fromDate = new FormControl('', Validators.required);
+    this.toDate = new FormControl('', Validators.required);
+  }
 
   filter() {
     const momentFromDate: moment.Moment = this.fromDate.value;
@@ -26,5 +30,9 @@ export class DateFilterComponent implements OnInit {
     const startDate = momentFromDate.format('YYYY-MM-DD');
     const endDate = momentToDate.format('YYYY-MM-DD');
     this.filter$.emit({ fromDate: startDate, toDate: endDate });
+  }
+
+  display(): boolean {
+    return true;
   }
 }

@@ -34,6 +34,7 @@ export class UserComponent implements OnInit {
     private transactionService: TransactionService,
     private dialogService: DialogService
   ) {
+    this.currentUser = null;
     this.authState$ = this.store.pipe(select(selectAuth));
     this.authState$.subscribe(state => {
       if (state && isNullOrUndefined(state.user)) {

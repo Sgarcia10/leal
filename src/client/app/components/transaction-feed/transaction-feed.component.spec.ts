@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TransactionFeedComponent } from './transaction-feed.component';
+import { SharedModule } from '../../shared/shared.module';
 
 describe('TransactionFeedComponent', () => {
   let component: TransactionFeedComponent;
@@ -8,9 +9,9 @@ describe('TransactionFeedComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TransactionFeedComponent ]
-    })
-    .compileComponents();
+      declarations: [TransactionFeedComponent],
+      imports: [SharedModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

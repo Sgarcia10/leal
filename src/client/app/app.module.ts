@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { AppEffects } from './store/app';
 import { reducers, metaReducers } from './store/index';
 
 import { CoreModule } from './core/core.module';
@@ -24,7 +23,7 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     CoreModule.forRoot(),
     StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([AppEffects, AuthEffects]),
+    EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production // Restrict extension to log-only mode

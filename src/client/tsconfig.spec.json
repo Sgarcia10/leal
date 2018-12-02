@@ -5,6 +5,7 @@
     "types": ["jest"]
   },
   "files": [
+    "polyfills.ts",
     "jest.config.js",
     "jest.setup.ts"
   ],

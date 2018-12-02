@@ -1,6 +1,6 @@
 <div class="app-transaction">
   <label class="mat-title">Transaction</label>
-  <mat-chip-list class="mat-chip-list-stacked" selectable="false" multiple>
+  <mat-chip-list class="mat-chip-list-stacked" selectable="false" *ngIf="transaction" multiple>
     <label>Created Date: </label>
     <mat-chip class="chip" selected="false">
       {{transaction.createdDate | date:"MM/dd/yy"}}

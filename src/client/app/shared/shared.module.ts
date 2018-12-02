@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -17,7 +17,8 @@ import {
 } from '@angular/material';
 import {
   MAT_MOMENT_DATE_FORMATS,
-  MomentDateAdapter
+  MomentDateAdapter,
+  MatMomentDateModule
 } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
@@ -36,7 +37,8 @@ const modules = [
   MatDialogModule,
   MatChipsModule,
   MatDatepickerModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatMomentDateModule
 ];
 
 const providers = [
@@ -49,4 +51,8 @@ const providers = [
   providers: [...providers],
   exports: [...modules]
 })
-export class SharedModule {}
+export class SharedModule {
+  static get providers(): Provider[] {
+    return providers;
+  }
+}

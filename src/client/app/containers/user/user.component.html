@@ -1,4 +1,4 @@
-<app-header (logout$)=logout() [name]="currentUser.firstName"></app-header>
+<app-header (logout$)=logout() [name]="currentUser && currentUser.firstName"></app-header>
 <div class="app-user">
   <app-profile class="app-profile" [name]="fullName" [email]="email"></app-profile>
   <app-date-filter (filter$)=filterByDate($event)></app-date-filter>
