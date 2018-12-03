@@ -21,7 +21,11 @@ export class DateFilterComponent implements OnInit {
 
   ngOnInit() {
     this.fromDate = new FormControl('', Validators.required);
-    this.toDate = new FormControl('', Validators.required);
+    this.toDate = new FormControl({ value: '', disabled: true }, Validators.required);
+    this.fromDate.valueChanges.subscribe(value => {
+      if (this.fromDate.valid) this.toDate.enable();
+      else this.toDate.disable();
+    });
   }
 
   filter() {

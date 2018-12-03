@@ -16,7 +16,8 @@
         <mat-datepicker #from touchUi></mat-datepicker>
       </mat-form-field>
       <mat-form-field class="to">
-        <input matInput [matDatepicker]="to" placeholder="To" [formControl]="toDate" (focus)="to.open()" readonly>
+        <input matInput [matDatepicker]="to" [min]="fromDate.value" placeholder="To" [formControl]="toDate" (focus)="to.open()"
+          readonly>
         <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
         <mat-datepicker #to touchUi></mat-datepicker>
       </mat-form-field>
